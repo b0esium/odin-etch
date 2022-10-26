@@ -15,3 +15,9 @@
     border: 1px solid black;
     padding: 8px;
 }
+
+.on {
+    background-color: blueviolet;
+    width: 18px;
+    height: 18px;
+}

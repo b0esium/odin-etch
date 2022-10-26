@@ -9,6 +9,10 @@ for (let column = 1; column <= SQUARE_SIDE; column++) {
   for (let row = 1; row <= SQUARE_SIDE; row++) {
     let cell = document.createElement("div");
     cell.setAttribute("class", "cell");
+    cell.innerText = " ";
+    cell.addEventListener("mouseenter", () => {
+      cell.setAttribute("class", "on");
+    });
     col.append(cell);
   }
 }
