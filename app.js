@@ -18,14 +18,30 @@ function drawGrid(size) {
       cell.setAttribute("style", `padding:${padding}px`);
       cell.innerText = " ";
       cell.addEventListener("mouseenter", () => {
-        cell.setAttribute("class", "on");
-        cell.setAttribute("style", "padding:0");
-        cell.setAttribute("style", `width:${2 * padding + 2}px`); // border = 1px * 2
+        let newColor = randomColor();
+        cell.setAttribute(
+          "style",
+          `padding:0;
+          background-color: #${newColor};
+          width:${2 * padding}px;
+          min-height: ${2 * padding}px;`
+        );
       });
       row.append(cell);
     }
   }
 }
+
+// button to change size
+const changeSizeBtn = document.getElementById("changeSizeBtn");
+changeSizeBtn.addEventListener("click", () => {
+  newSize = prompt("New square side length? Max 64");
+  eraseGrid();
+  if (newSize > 64) {
+    newSize = 64;
+  }
+  drawGrid(newSize);
+});
 
 function eraseGrid() {
   while (grid.firstChild) {
@@ -33,10 +49,14 @@ function eraseGrid() {
   }
 }
 
-// button to change size
-const changeSizeBtn = document.getElementById("changeSizeBtn");
-changeSizeBtn.addEventListener("click", () => {
-  newSize = prompt("New square side length?");
-  eraseGrid();
-  drawGrid(newSize);
-});
+function randomColor() {
+  let r = randomInt(255);
+  let g = randomInt(255);
+  let b = randomInt(255);
+  // make a string of hex values
+  return [r, g, b].map((value) => value.toString(16).padStart(2, 0)).join("");
+}
+
+function randomInt(max) {
+  return Math.floor(Math.random() * (max + 1));
+}
