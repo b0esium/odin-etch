@@ -12,9 +12,12 @@ function drawGrid(size) {
     for (let column = 1; column <= size; column++) {
       let cell = document.createElement("div");
       cell.setAttribute("class", "cell");
+      cell.setAttribute("style", "padding:8px");
       cell.innerText = " ";
       cell.addEventListener("mouseenter", () => {
         cell.setAttribute("class", "on");
+        cell.setAttribute("style", "padding:0");
+        cell.setAttribute("style", "width:18px");
       });
       row.append(cell);
     }
