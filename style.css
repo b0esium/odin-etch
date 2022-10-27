@@ -5,9 +5,10 @@
 
 #grid {
     flex-direction: column;
+    margin-top: 5%;
 }
 
-.column {
+.row {
     display: flex;
 }
 
@@ -20,4 +21,8 @@
     background-color: blueviolet;
     width: 18px;
     height: 18px;
+}
+
+#changeSizeBtn {
+    margin-top: 5%;
 }
